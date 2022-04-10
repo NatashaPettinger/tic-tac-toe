@@ -1,0 +1,1 @@
+This API returns ingredients & instructions for different cocktails. 
