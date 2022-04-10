@@ -23,6 +23,32 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+header {
+  width: 100%;
+  float: left;
+}
+
+.narrow {
+  width: 30%;
+  float: left;
+}
+
+.wide{
+  width: 70%;
+  float: left;
+}
+
+ul, ol, h3 {
+  display: block;
+  margin-left: 15%;
+  text-align: left;
+}
+
+#searchResults>li:hover {
+  cursor: pointer;
+  color: seagreen;
+}
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/

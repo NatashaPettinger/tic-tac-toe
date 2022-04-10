@@ -5,26 +5,34 @@
     	<meta name="description" content="This is where your description goes">
     	<meta name="keywords" content="one, two, three">
 
-		<title>Title in the tab</title>
+		<title>Cocktail API</title>
 
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
+		<header>
+			<h1>Search Cocktail by Name</h1>
+			<input id="search" type="text" placeholder="Cocktail keyword" name="" value="">
+			<button type="button" name="button">Get Cocktail</button>
+		</header>
+		<section class="narrow">
+			<h3 id="searchHeading"></h3>
+			<ul id="searchResults">
+			</ul>
+		</section>
+		<section class = "wide">
+			<h2></h2>
+			<img src="" alt="">
+			<h3 id="ingredients"></h3>
+			<ul id="ingredientList">
+			</ul>
+			<h3 class="instructions"></h3>
+			<ol id="instructionList">
+			</ol>
+		</section>
 
-		<h1>Which Cocktail?</h1>
-		<input type="text" name="" value="">
-		<button type="button" name="button">Get Cocktail</button>
-
-		<h2></h2>
-		<img src="" alt="">
-		<h3 id="ingredients"></h3>
-		<ul id="ingredientList">
-		</ul>
-		<h3 class="instructions"></h3>
-		<ol id="instructionList">
-		</ol>
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

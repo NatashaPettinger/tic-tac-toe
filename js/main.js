@@ -1,50 +1,71 @@
 //The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
-document.querySelector('button').addEventListener('click', getDrink)
+document.querySelector('button').addEventListener('click', searchResults)
 
-function getDrink(){
+function searchResults() {
+  let drink = document.querySelector('input').value
+
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
+    .then(res => res.json()) // parse response as JSON
+    .then(data => {
+      console.log(data.drinks)
+      document.getElementById('searchHeading').innerText = 'Search Results'
+
+      let drinkLinks = [];
+      data.drinks.forEach(x => drinkLinks.push(x.strDrink));
+
+      document.getElementById('searchResults').innerHTML = '';
+      drinkLinks.forEach((x, i) => {
+        document.getElementById('searchResults').innerHTML += `<li id="i${i}" class="clink">${x}</li>`;
+      })
+      Array.from(document.querySelectorAll('.clink')).forEach(d => d.addEventListener('click', findDrink))
+
+      let index
+      function findDrink(click) {
+        index = click.target.id[1];
+        getDrink(index);
+      }
+    })
+}
+
+function getDrink(index){
     let drink = document.querySelector('input').value
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${drink}`)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data.drinks)
-      //document.getElementById('ingredientList').removeChild('li')
-      //document.getElementById('instructionList').removeChild('li');
 
-      document.querySelector('h2').innerText = data.drinks[0].strDrink
+      document.querySelector('h2').innerText = data.drinks[index].strDrink
 
-      document.querySelector('img').src = data.drinks[0].strDrinkThumb
+      document.querySelector('img').src = data.drinks[index].strDrinkThumb
 
       //parse ingredients
-      document.getElementById('ingredients').innerText = 'Ingredients:\n'
-      let ing = []
+      let ing = [];
       for (let i = 1; i <= 15; i++) {
         let meas = 'strMeasure' + i;
         let what = 'strIngredient' + i;
-        if (data.drinks[0][meas] && data.drinks[0][what]) {
-          ing.push(data.drinks[0][meas] + data.drinks[0][what]);
-        } else if (!data.drinks[0][meas] && data.drinks[0][what]) {
-          ing.push(data.drinks[0][what]);
+        if (data.drinks[index][meas] && data.drinks[index][what]) {
+          ing.push(data.drinks[index][meas] + data.drinks[index][what]);
+        } else if (!data.drinks[index][meas] && data.drinks[index][what]) {
+          ing.push(data.drinks[index][what]);
         } else break;
       }
+      console.log(ing)
       //Append ingredients to DOM
-        let item;
-        ing.forEach(x => {
-          item = document.createElement('li');
-          item.textContent = `${x}`;
-          document.getElementById('ingredientList').appendChild(item);
-        })
+      document.getElementById('ingredients').innerText = 'Ingredients:'
+      document.getElementById('ingredientList').innerHTML = '';
+      ing.forEach(x => {
+        document.getElementById('ingredientList').innerHTML += `<li>${x}</li>`;
+      })
 
-      //format instructions.
-      let inst = data.drinks[0].strInstructions.split('.');
-      if (inst[inst.length - 1] === '.') inst.pop();
-      document.querySelector('.instructions').innerText = 'Instructions:\n' 
-        let dir;
-        inst.forEach(y => {
-          dir = document.createElement('li');
-          dir.textContent = `${y}.`;
-          document.getElementById('instructionList').appendChild(dir);
-        })
+      //parse & append instructions to DOM:
+      let inst = data.drinks[index].strInstructions.split('.');
+      if (inst[inst.length - 1] === '') inst.pop();
+      document.querySelector('.instructions').innerText = 'Instructions:' 
+      document.getElementById('instructionList').innerHTML = '';
+      inst.forEach(y => {
+        document.getElementById('instructionList').innerHTML += `<li>${y}.</li>`
+      })
     })
     .catch(err => {
         console.log(`error ${err}`)
