@@ -258,7 +258,9 @@ a {
   a:hover {
     border-bottom-color: transparent;
     color: #1cb495 !important;
-    text-decoration: none; }
+    text-decoration: none; 
+    cursor: pointer;}
+    
 
 strong, b {
   color: #fff;
@@ -893,10 +895,14 @@ ul #searchResults{
   margin-left: 0;
 }
 
-.hidden, .wide {
+.hidden {
   display: none;
 }
 
 .reveal {
   display: inherit;
+}
+
+img{
+  width: 100%;
 }

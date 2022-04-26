@@ -18,10 +18,9 @@ function searchResults() {
         drinkLinks.push(x.strDrink);
         idNumbers.push(x.idDrink);});
       document.getElementById('header').classList = 'hidden';
-      document.getElementsByClassName('wide').classList = 'reveal';
       document.getElementById('signup-form').innerHTML += `<input id="chooseRandom" class="clink" type="button" value="Choose for me!" />` /* <li id="chooseRandom" class="clink">Choose for me!</li>; */
       drinkLinks.forEach((x, i) => {
-        document.getElementById('searchResults').innerHTML += `<li id="i${i}" class="clink">${x}</li>`;
+        document.getElementById('searchResults').innerHTML += `<li id="i${i}" class="clink"><a>${x}</a></li>`;
       })
       Array.from(document.querySelectorAll('.clink')).forEach(d => d.addEventListener('click', findDrink))
 
@@ -51,7 +50,7 @@ function getDrink(j){
         
         document.querySelector('h2').innerText = cocktail.strDrink
         document.querySelector('img').src = cocktail.strDrinkThumb
-
+        document.querySelector('.wide').classList.remove('hidden')
         //parse ingredients
         let ing = [];
         for (let i = 1; i <= 15; i++) {
