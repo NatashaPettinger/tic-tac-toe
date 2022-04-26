@@ -1,27 +1,44 @@
 //The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
-document.querySelector('input[type="button"]').addEventListener('click', searchResults)
+document.getElementById('searchButton').addEventListener('click', newPage)
 
-function searchResults() {
-  let drink = `i=${document.querySelector('input').value.split(' ').join('&')}`;
+function newPage() {
+  let drink = `i=${document.getElementById('search').value}`;
+  window.open('results.html', '_self');
+  searchResults(drink)
+}
+
+function searchResults(drink) {
+
+  //hide drink recipe, if shown.
+  if (document.querySelector('.wide').classList === 'wide') {
+    document.querySelector('.wide').classList += 'hidden';
+  }
+  //hide header to make more room for search results.
+  document.getElementById('header').classList = 'hidden';
+
+  
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?${drink}`)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data.drinks)
 
-      sessionStorage.setItem('cocktailList', data);
-
-      //NEED TO SAVE THE COCKTAIL ID NUMBER IN AN ARRAY
+      //save the cocktail ID numbers & drink names in arrays.
       let drinkLinks = [];
       let idNumbers = [];
       data.drinks.forEach(x => {
         drinkLinks.push(x.strDrink);
         idNumbers.push(x.idDrink);});
-      document.getElementById('header').classList = 'hidden';
-      document.getElementById('signup-form').innerHTML += `<input id="chooseRandom" class="clink" type="button" value="Choose for me!" />` /* <li id="chooseRandom" class="clink">Choose for me!</li>; */
+      
+      //add choose for me button to DOM
+      document.getElementById('signup-form').innerHTML += `<input id="chooseRandom" class="clink" type="button" value="Choose for me!" />`
+      
+      //clear search results string & add links to cocktail recipes.
+      let searchResults = '';
       drinkLinks.forEach((x, i) => {
-        document.getElementById('searchResults').innerHTML += `<li id="i${i}" class="clink"><a>${x}</a></li>`;
+        searchResults += `<li><a  id="i${i}" class="clink">${x}</a></li>`;
       })
+      document.getElementById('searchResults').innerHTML = searchResults;
       Array.from(document.querySelectorAll('.clink')).forEach(d => d.addEventListener('click', findDrink))
 
       let index
