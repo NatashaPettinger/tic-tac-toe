@@ -1,38 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+
+<html>
 	<head>
-    	<meta charset="utf-8">
-    	<meta name="description" content="This is where your description goes">
-    	<meta name="keywords" content="one, two, three">
-
-		<title>Cocktail API</title>
-
-		<!-- external CSS link -->
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/style.css">
+		<title>Bartender's Choice</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body>
-		<header>
-			<h1>Search Cocktail by Name</h1>
-			<input id="search" type="text" placeholder="Cocktail keyword" name="" value="">
-			<button type="button" name="button">Get Cocktail</button>
-		</header>
-		<section class="narrow">
-			<h3 id="searchHeading"></h3>
-			<ul id="searchResults">
-			</ul>
-		</section>
-		<section class = "wide">
-			<h2></h2>
-			<img src="" alt="">
-			<h3 id="ingredients"></h3>
-			<ul id="ingredientList">
-			</ul>
-			<h3 class="instructions"></h3>
-			<ol id="instructionList">
-			</ol>
-		</section>
+	<body class="is-preload">
 
-		<script type="text/javascript" src="js/main.js"></script>
+		<!-- Header -->
+			<header id="header">
+				<h1>Bartender's Choice</h1>
+				<p>This handy dandy tool helps bartenders when they are feeling uninspired and are faced with those two dreaded words–<q>surprise me</q>. Simply ask your guest whether they have a preference for base spirit, or if they're feeling like a certain type of drink–spirit forward, fruity & refreshing, herby and bitter, etc. etc.–then type in an ingredient that fits with their reply. After that, it's the bartender's choice! If you really can't handle decision making (we've all been there), we've got you. Simply click the <strong>choose for me</strong> button.</p>
+			</header>
+
+		<!-- Search -->
+			<form id="signup-form" method="post" action="#">
+				<input type="email" name="email" id="email search" placeholder="Ingredient Name" />
+				<input type="button" value="Find Cocktails" />
+			</form>
+
+		<!-- Results -->
+			<section class = "wide">
+				<h2></h2>
+				<img src="" alt="">
+				<h3 id="ingredients"></h3>
+				<ul id="ingredientList">
+				</ul>
+				<h3 class="instructions"></h3>
+				<ol id="instructionList">
+				</ol>
+			</section>
+			<section>
+				<ul id="searchResults">
+				</ul>
+			</section>
+			
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/main.js"></script>
+			<script type="text/javascript" src="assets/js/api.js"></script>
+
 	</body>
 </html>
