@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Bartender's Choice</title>
+		<title>Tic Tac Toe</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -11,35 +11,37 @@
 
 		<!-- Header -->
 			<header id="header">
-				<h1>Bartender's Choice</h1>
-				<p>This handy dandy tool helps bartenders when they are feeling uninspired and are faced with those two dreaded words–<q>surprise me</q>. Simply ask your guest whether they have a preference for base spirit, or if they're feeling like a certain type of drink–spirit forward, fruity & refreshing, herby and bitter, etc. etc.–then type in an ingredient that fits with their reply. After that, it's the bartender's choice! If you really can't handle decision making (we've all been there), we've got you. Simply click the <strong>choose for me</strong> button after you search.</p>
+				<h1>Tic Tac Toe</h1>
 			</header>
 
 		<!-- Search -->
 			<form id="search-form">
-				<input type="text" name="text" id="search" placeholder="Ingredient Name" />
-				<input type="button" id="searchButton" value="Find Cocktails" />
+				<input type="button" value="New Game" />
 			</form>
 
 		<!-- Results -->
-			<section class = "wide hidden">
-				<h2></h2>
-				<img src="" alt="">
-				<h3 id="ingredients"></h3>
-				<ul id="ingredientList">
-				</ul>
-				<h3 class="instructions"></h3>
-				<ol id="instructionList">
-				</ol>
+			<section id="newBoard">
+				<section class="row">
+					<section id="p11" class="box"></section>
+					<section id="p12" class="box"></section>
+					<section id="p13" class="box"></section>
+				</section>
+				<section class="row">
+					<section id="p21" class="box"></section>
+					<section id="p22" class="box"></section>
+					<section id="p23" class="box"></section>
+				</section>
+				<section class="row">
+					<section id="p31" class="box"></section>
+					<section id="p32" class="box"></section>
+					<section id="p33" class="box"></section>
+				</section>
 			</section>
-			<section class="searchSection">
-				<ul id="searchResults">
-				</ul>
-			</section>
+			<section><h2 id="result"></h2></section>
 			
 
 		<!-- Footer -->
-			<footer id="footer">
+			<!-- <footer id="footer">
 				<ul class="icons">
 					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="#" class="icon brands fa-linkedin"><span class="label">Linked In</span></a></li>
@@ -49,11 +51,11 @@
 				<ul class="copyright">
 					<li>&copy; NatPett Digital</li><li>Design based on Eventually by<a href="http://html5up.net">HTML5 UP</a></li>
 				</ul>
-			</footer>
+			</footer> -->
 
 		<!-- Scripts -->
 			<!-- <script src="assets/js/main.js"></script> -->
-			<script type="text/javascript" src="assets/js/api.js"></script>
+			<script type="text/javascript" src="assets/js/main.js"></script>
 
 	</body>
 </html>
